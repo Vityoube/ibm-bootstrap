@@ -3,7 +3,43 @@ document.addEventListener('DOMContentLoaded', function(){
     $("#totalExpenses").text(`$${expenseData.totalExpenses}`)
     $("#balance").text(`$${user.income - expenseData.totalExpenses}`)
     handleMonthFilter()
+    setCategoryDropdown()
+    addExpenseHandler()
 })
+
+function setCategoryDropdown() {
+    const categoryDropdown = document.getElementById("category");
+    const expenseCategories = new Set(expenseData.expenses.map((expense) => expense.categoryName))
+    expenseCategories.forEach(function (item) {
+        const op = document.createElement("option");
+        op.text = item;
+        op.value = item;
+        categoryDropdown.appendChild(op);
+    });
+}
+
+function addExpenseHandler() {
+    $(".expButton").click(function (event) {
+        event.preventDefault(); // to stop page scrolling on showing modal window
+        const mode = $(this).data("mode");
+        if (mode === "edit") {
+            const expense = $(this).data("expense");
+            console.log(expense);
+            $("#modalTitle").text("Edit Expense");
+            $("#date").val(expense.date.split("T")[0]);
+            $("#category").val(expense.categoryName);
+            $("#description").val(expense.description);
+            $("#amount").val(expense.amount);
+            $("#expense-submit-btn").text("Save Changes");
+            $("#expenseModal").modal("show");
+        } else {
+            $("#modalTitle").text("Add Expense");
+            $("#expense-submit-btn").text("Submit");
+            $("#expenseForm")[0].reset();  // Clear form fields if adding a new expense
+            $("#expenseModal").modal("show");
+        }
+    });
+}
 
 function readExpensesByMonthFilter() {
     const monthYear = $("#monthFilter").val();
@@ -82,11 +118,12 @@ async function renderExpenseData(expenses) {
         const amountCell = document.createElement("td");
         amountCell.textContent = "$" + expense.amount;
         row.appendChild(amountCell);
+        console.log(JSON.stringify(expense) )
         /**Edit and Delete icons**/
         const controlCell = document.createElement("td");
         controlCell.innerHTML =
             '<a href="#" class="me-2 edit expButton" data-mode="edit"' +
-            ' data-expense="' + JSON.stringify(expense) + '">' +
+            " data-expense='" + JSON.stringify(expense) + "'>" +
             '<img src="./images/edit.png" alt="Edit" class="icon"/></a>' +
             '<a href="#" class="delete" data-bs-toggle="modal"' +
             ' data-bs-target="#deleteModal"><img src="./images/delete.png" alt="Delete" class="icon"/></a>';

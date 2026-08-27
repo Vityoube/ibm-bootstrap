@@ -50,3 +50,11 @@ tr {
     height: 17px;
 }
 
+.form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.modal-footer {
+    margin-top: 20px;
+}
+
