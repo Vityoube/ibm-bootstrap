@@ -24,7 +24,6 @@ function addExpenseHandler() {
         const mode = $(this).data("mode");
         if (mode === "edit") {
             const expense = $(this).data("expense");
-            console.log(expense);
             $("#modalTitle").text("Edit Expense");
             $("#date").val(expense.date.split("T")[0]);
             $("#category").val(expense.categoryName);
@@ -118,7 +117,6 @@ async function renderExpenseData(expenses) {
         const amountCell = document.createElement("td");
         amountCell.textContent = "$" + expense.amount;
         row.appendChild(amountCell);
-        console.log(JSON.stringify(expense) )
         /**Edit and Delete icons**/
         const controlCell = document.createElement("td");
         controlCell.innerHTML =
