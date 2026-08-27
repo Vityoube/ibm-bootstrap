@@ -58,3 +58,27 @@ tr {
     margin-top: 20px;
 }
 
+
+@media (max-width: 768px) {
+    /** Align Tagline in header to the left **/
+    .tagline {
+        float: left;
+    }
+    /** Align month filter in header to the left **/
+    #monthFilter {
+        float: left !important;
+    }
+    /** Adjust margins **/
+    .card {
+        margin-bottom: 5px;
+    }
+    .main-container {
+        margin-top: 15px;
+    }
+    .row {
+        margin-top: 15px;
+    }
+    .tbl-container {
+        margin-top: 10px;
+    }
+}
