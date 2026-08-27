@@ -1,0 +1,52 @@
+header {
+    background-color: #007d79;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header > h1 {
+    color: white;
+    font-family: Verdana, sans-serif;
+    font-size: 2.3rem;
+    font-style: italic;
+}
+
+header > p {
+    color: #f0f7f6;
+    font-size: 1rem;
+}
+
+.expButton {
+    background-color: #007d79;
+}
+
+.expButton:hover {
+    background-color: #005d5d;
+}
+
+#monthFilter {
+    width: 170px;
+}
+
+.overview-row {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.icon {
+    width: 40px;
+}
+
+.card-text {
+    margin-bottom: 0;
+}
+
+.card-title {
+    margin-top: 0.5rem;
+}
+
+tr {
+    height: 17px;
+}
+
